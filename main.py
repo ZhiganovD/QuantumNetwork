@@ -4,7 +4,7 @@ from gates import *
 def quantum_randbit():
     a = QRegister(1, '0')
     a.apply(H)
-
+    #lmao
     return a.measure()
 
 
