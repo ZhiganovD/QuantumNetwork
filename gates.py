@@ -11,3 +11,20 @@ def ry(state, phi):
         [np.cos(phi / 2), -np.sin(phi / 2)],
         [np.sin(phi / 2),  np.cos(phi / 2)]
     ]) @ state
+
+def rx(state, phi):
+    return np.array([
+        [np.cos(phi / 2), -1j * np.sin(phi / 2)],
+        [-1j * np.sin(phi / 2),  np.cos(phi / 2)]
+    ]) @ state
+
+def rz(state, phi):
+    return np.array([
+        [np.e ** (-0.5 * 1j * phi), 0],
+        [0,  np.e ** (0.5 * 1j * phi)]
+    ]) @ state
+
+def u1(state, phi):
+    return np.array([[1, 0], [0, np.exp(1j * phi)]]) @ state
+
+CNOT = QGate([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]])
