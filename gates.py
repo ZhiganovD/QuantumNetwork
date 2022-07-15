@@ -27,4 +27,6 @@ def rz(state, phi):
 def u1(state, phi):
     return np.array([[1, 0], [0, np.exp(1j * phi)]]) @ state
 
-CNOT = QGate([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]])
+CNOT = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]])
+
+SWAP = np.array([[1, 0, 0, 0], [0, 0, 1, 0], [0, 1, 0, 0], [0, 0, 0, 1]])

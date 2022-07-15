@@ -1,13 +1,15 @@
 from quantum import *
 from gates import *
 
-def quantum_randbit():
-    a = QRegister(1, '0')
-    a.apply(H)
-    
-    return a.measure()
+import pennylane as qml
+from pennylane import numpy as np
 
+dev = qml.device("default.qubit", wires=2)
 
-for i in range(32):
-    print(quantum_randbit(), end='')
-print()
+@qml.qnode(dev)
+def circuit(param):
+    qml.RX(param, wires=0)
+    qml.CNOT(wires=[0, 1])
+    return qml.expval(qml.PauliZ(0)), qml.expval(qml.PauliZ(1))
+
+print(circuit(np.pi / 2))
